@@ -50,8 +50,8 @@ public class AlbumRepository {
 
     public void addNewAlbum(Album album) {
         AlbumApiService albumApiService = RetrofitInstance.getService();
-        var albumPostCall = albumApiService.addAlbum(album);
-        albumPostCall.enqueue(new Callback<>() {
+        var call = albumApiService.addAlbum(album);
+        call.enqueue(new Callback<>() {
                                   @Override
                                   public void onResponse(Call<Album> call, Response<Album> response) {
 
@@ -65,5 +65,42 @@ public class AlbumRepository {
                                   }
                               }
         );
+    }
+
+    public void updateAlbum(Long id, Album album) {
+        AlbumApiService albumApiService = RetrofitInstance.getService();
+        var call = albumApiService.updateAlbum(id, album);
+        call.enqueue(new Callback<Album>() {
+            @Override
+            public void onResponse(Call<Album> call, Response<Album> response) {
+                Toast.makeText(application.getBaseContext(), "Album updated successfully", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<Album> call, Throwable t) {
+                Toast.makeText(application.getBaseContext(), "Could not update album", Toast.LENGTH_SHORT).show();;
+                Log.e("POST error", t.getMessage());
+            }
+        });
+    }
+
+
+    public void deleteAlbum(Long id) {
+        AlbumApiService albumApiService = RetrofitInstance.getService();
+        var call = albumApiService.deleteAlbum(id);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(application.getBaseContext(), "Album deleted successfully", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(application.getBaseContext(), "Could not delete album", Toast.LENGTH_SHORT).show();;
+                Log.e("POST error", t.getMessage());
+            }
+        });
     }
 }
