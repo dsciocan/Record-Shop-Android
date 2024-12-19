@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+
+<data>
+    <variable
+        name="clickHandler"
+        type="com.northcoders.recordshopfrontend.ui.mainactivity.MainActivityClickHandler" />
+</data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
@@ -11,6 +18,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.mainactivity.MainActivity"
     android:background="#eeedff">
+
+
 
     <TextView
         android:id="@+id/title"
@@ -28,18 +37,6 @@
         android:textColor="#d5dff5"
         android:elevation="@dimen/cardview_default_elevation"/>
 
-    <Button
-        android:id="@id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="10dp"
-        android:text="@string/add_button"
-        android:textColor="#d5dff5"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        android:backgroundTint="#364c7d"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -48,11 +45,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addButton"
+        app:layout_constraintTop_toBottomOf="@id/title"
         >
 
 
     </androidx.recyclerview.widget.RecyclerView>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#A8B8F4"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_margin="5dp"
+        android:onClick="@{clickHandler::addNewAlbumButton}"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
