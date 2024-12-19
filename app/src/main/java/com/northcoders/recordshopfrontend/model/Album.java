@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
 
 public class Album extends BaseObservable {
 
-    private long id;
+    private Long id;
     private String name;
     private int releaseYear;
     private int stock;
@@ -19,6 +19,15 @@ public class Album extends BaseObservable {
 
     public Album(long id, String name, int releaseYear, int stock, String image, String[] genreSet, Artist albumArtist) {
         this.id = id;
+        this.name = name;
+        this.releaseYear = releaseYear;
+        this.stock = stock;
+        this.image = image;
+        this.genreSet = genreSet;
+        this.albumArtist = albumArtist;
+    }
+
+    public Album(String name, int releaseYear, int stock, String image, String[] genreSet, Artist albumArtist) {
         this.name = name;
         this.releaseYear = releaseYear;
         this.stock = stock;
@@ -71,7 +80,6 @@ public class Album extends BaseObservable {
         return stock;
     }
 
-
     public String getStockString() {
         return "In stock: " + stock;
     }
@@ -81,10 +89,13 @@ public class Album extends BaseObservable {
         notifyPropertyChanged(BR.stock);
     }
 
-    @Bindable
+
+
+        @Bindable
     public String[] getGenreSet() {
         return genreSet;
     }
+
 
     public void setGenreSet(String[] genreSet) {
         this.genreSet = genreSet;
@@ -115,7 +126,6 @@ public class Album extends BaseObservable {
         return albumArtist;
     }
 
-
     public String getAlbumArtistString() {
         return "by " + albumArtist.getName();
     }
@@ -124,4 +134,5 @@ public class Album extends BaseObservable {
         this.albumArtist = albumArtist;
         notifyPropertyChanged(BR.albumArtist);
     }
+
 }
