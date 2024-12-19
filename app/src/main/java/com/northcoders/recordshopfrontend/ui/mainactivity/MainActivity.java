@@ -25,7 +25,7 @@ import com.northcoders.recordshopfrontend.ui.mainactivity.adapter.AlbumAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private RecyclerView recyclerView;
     private ArrayList<Album> albums;
@@ -72,10 +72,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayInRecyclerView() {
         recyclerView = activityMainBinding.recyclerView;
-        albumAdapter = new AlbumAdapter(albums, this);
+        albumAdapter = new AlbumAdapter(albums, this, this);
         recyclerView.setAdapter(albumAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         albumAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }
