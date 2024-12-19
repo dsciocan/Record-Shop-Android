@@ -19,6 +19,7 @@ import com.northcoders.recordshopfrontend.R;
 import com.northcoders.recordshopfrontend.databinding.ActivityMainBinding;
 import com.northcoders.recordshopfrontend.model.Album;
 import com.northcoders.recordshopfrontend.model.AlbumRepository;
+import com.northcoders.recordshopfrontend.ui.addalbum.AddAlbumClickHandlers;
 import com.northcoders.recordshopfrontend.ui.mainactivity.adapter.AlbumAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
+    private MainActivityClickHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         getAllAlbums();
+
+        handler = new MainActivityClickHandler(this);
+        activityMainBinding.setClickHandler(handler);
+
 
     }
 
