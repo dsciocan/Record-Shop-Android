@@ -15,4 +15,7 @@
     <string name="welcome_to">Welcome to Stef\'s Record Shop!</string>
     <string name="add_button">Add Album</string>
     <string name="add_new_album">Add new album</string>
+    <string name="update_album">Update Album</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>
