@@ -1,12 +1,17 @@
 package com.northcoders.recordshopfrontend.model;
 
+
 public class Artist {
 
-    private long id;
+    private Long id;
     private String name;
 
     public Artist(long id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Artist(String name) {
         this.name = name;
     }
 
@@ -21,9 +26,11 @@ public class Artist {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
