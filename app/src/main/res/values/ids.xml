@@ -5,4 +5,5 @@
     <item name="record" type="id" />
     <item name="barrier2" type="id" />
     <item name="addButton" type="id" />
+    <item name="genreSpinner" type="id" />
 </resources>

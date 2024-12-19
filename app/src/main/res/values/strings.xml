@@ -1,6 +1,18 @@
 <resources>
+    <string-array name="genre_array">
+        <item>Pop</item>
+        <item>Rock</item>
+        <item>Hiphop</item>
+        <item>Rap</item>
+        <item>Jazz</item>
+        <item>Classical</item>
+        <item>Blues</item>
+        <item>Metal</item>
+        <item>Dance</item>
+    </string-array>
     <string name="app_name">Record Shop Frontend</string>
     <string name="vinyl_record">Vinyl record</string>
     <string name="welcome_to">Welcome to Stef\'s Record Shop!</string>
     <string name="add_button">Add Album</string>
+    <string name="add_new_album">Add new album</string>
 </resources>
