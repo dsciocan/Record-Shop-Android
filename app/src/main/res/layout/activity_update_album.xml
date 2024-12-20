@@ -11,7 +11,7 @@
 
         <variable
             name="clickHandlers"
-            type="com.northcoders.recordshopfrontend.ui.addalbum.UpdateAlbumClickHandler" />
+            type="com.northcoders.recordshopfrontend.ui.updatealbum.UpdateAlbumClickHandler" />
 
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,14 +34,14 @@
         android:textAlignment="center"
         android:background="#364c7d"
         android:textColor="#d5dff5"
-        android:id="@+id/addHeader"/>
+        android:id="@+id/updateHeader"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addHeader"
+        app:layout_constraintTop_toBottomOf="@id/updateHeader"
         android:orientation="vertical"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="5dp"
@@ -88,7 +88,7 @@
             android:text="@={album.albumArtist.name}"
             />
         <Button
-            android:id="@id/addButton"
+            android:id="@id/updateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
@@ -99,7 +99,7 @@
             android:onClick="@{clickHandlers::updateAlbum}"
             />
         <Button
-            android:id="@id/addButton"
+            android:id="@id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"

@@ -6,4 +6,6 @@
     <item name="barrier2" type="id" />
     <item name="addButton" type="id" />
     <item name="genreSpinner" type="id" />
+    <item name="updateButton" type="id" />
+    <item name="deleteButton" type="id" />
 </resources>
