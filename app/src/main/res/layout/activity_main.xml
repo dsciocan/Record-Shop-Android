@@ -19,24 +19,44 @@
     tools:context=".ui.mainactivity.MainActivity"
     android:background="#eeedff">
 
-
-
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:paddingTop="20dp"
-        android:paddingHorizontal="3dp"
-        android:text="@string/welcome_to"
-        android:fontFamily="sans-serif-black"
-        android:textSize="28sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/topView"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="#211F57"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#211F57"
-        android:textColor="#d5dff5"
-        android:elevation="@dimen/cardview_default_elevation"/>
+        app:layout_constraintBottom_toTopOf="@id/recyclerView">
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingHorizontal="3dp"
+            android:text="@string/welcome_to"
+            android:fontFamily="sans-serif-black"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#d5dff5" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/search_bg"
+            android:layout_marginHorizontal="10dp"
+            android:elevation="@dimen/cardview_default_elevation"
+        />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -45,11 +65,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/topView"
         >
 
-
     </androidx.recyclerview.widget.RecyclerView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
