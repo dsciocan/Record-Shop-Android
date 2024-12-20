@@ -17,14 +17,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mainactivity.MainActivity"
-    android:background="#eeedff">
+    android:background="#F7F7FF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/topView"
         android:orientation="vertical"
-        android:paddingTop="15dp"
+        android:paddingTop="25dp"
         android:layout_marginBottom="10dp"
         android:background="#211F57"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +75,7 @@
         android:src="@android:drawable/ic_input_add"
         android:layout_margin="5dp"
         android:onClick="@{clickHandler::addNewAlbumButton}"
+        android:layout_marginBottom="25dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

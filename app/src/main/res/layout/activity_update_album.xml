@@ -18,7 +18,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.updatealbum.UpdateAlbumActivity">
+    tools:context=".ui.updatealbum.UpdateAlbumActivity"
+    android:background="#F7F7FFFF">
 
     <TextView
         android:layout_width="match_parent"
