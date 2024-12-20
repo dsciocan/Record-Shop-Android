@@ -1,5 +1,9 @@
 package com.northcoders.recordshopfrontend.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -7,7 +11,7 @@ import com.northcoders.recordshopfrontend.BR;
 
 import java.lang.reflect.Array;
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
 
     private Long id;
     private String name;
@@ -16,6 +20,7 @@ public class Album extends BaseObservable {
     private String image;
     private String[] genreSet;
     private Artist albumArtist;
+
 
     public Album(long id, String name, int releaseYear, int stock, String image, String[] genreSet, Artist albumArtist) {
         this.id = id;
@@ -39,6 +44,33 @@ public class Album extends BaseObservable {
     public Album() {
     }
 
+
+    protected Album(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        name = in.readString();
+        releaseYear = in.readInt();
+        stock = in.readInt();
+        image = in.readString();
+        genreSet = in.createStringArray();
+        albumArtist = in.readParcelable(Artist.class.getClassLoader());
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
+
     @Bindable
     public long getId() {
         return id;
@@ -47,7 +79,6 @@ public class Album extends BaseObservable {
     public void setId(long id) {
         this.id = id;
         notifyPropertyChanged(BR.id);
-
     }
 
     @Bindable
@@ -90,8 +121,7 @@ public class Album extends BaseObservable {
     }
 
 
-
-        @Bindable
+    @Bindable
     public String[] getGenreSet() {
         return genreSet;
     }
@@ -101,7 +131,6 @@ public class Album extends BaseObservable {
         this.genreSet = genreSet;
         notifyPropertyChanged(BR.genreSet);
     }
-
 
     @Bindable
     public String getImage() {
@@ -133,6 +162,27 @@ public class Album extends BaseObservable {
     public void setAlbumArtist(Artist albumArtist) {
         this.albumArtist = albumArtist;
         notifyPropertyChanged(BR.albumArtist);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(name);
+        dest.writeInt(releaseYear);
+        dest.writeInt(stock);
+        dest.writeString(image);
+        dest.writeStringArray(genreSet);
+        dest.writeParcelable(albumArtist, flags);
     }
 
 }
