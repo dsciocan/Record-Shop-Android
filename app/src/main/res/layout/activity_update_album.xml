@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
-        android:background="#364c7d"
+        android:background="#211F57"
         android:textColor="#d5dff5"
         android:id="@+id/updateHeader"/>
 
@@ -95,7 +95,7 @@
             android:layout_marginVertical="10dp"
             android:text="@string/update"
             android:textColor="#d5dff5"
-            android:backgroundTint="#364c7d"
+            android:backgroundTint="#211F57"
             android:onClick="@{clickHandlers::updateAlbum}"
             />
         <Button

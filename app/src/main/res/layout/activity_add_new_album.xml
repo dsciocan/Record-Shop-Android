@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAlignment="center"
-        android:background="#364c7d"
+        android:background="#211F57"
         android:textColor="#d5dff5"
         android:id="@+id/addHeader"/>
 
@@ -84,14 +84,6 @@
 
             />
 
-
-
-<!--        <EditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:hint="Genre"-->
-<!--            android:text="@={album.genre}"-->
-<!--            />-->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +98,7 @@
             android:layout_marginVertical="10dp"
             android:text="@string/add_button"
             android:textColor="#d5dff5"
-            android:backgroundTint="#364c7d"
+            android:backgroundTint="#211F57"
             android:onClick="@{clickHandlers::saveAlbum}"
             />
     </LinearLayout>

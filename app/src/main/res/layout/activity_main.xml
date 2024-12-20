@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="#364c7d"
+        android:background="#211F57"
         android:textColor="#d5dff5"
         android:elevation="@dimen/cardview_default_elevation"/>
 
