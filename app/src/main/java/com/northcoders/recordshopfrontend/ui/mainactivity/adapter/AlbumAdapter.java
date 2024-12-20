@@ -31,6 +31,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
+    public void setFilteredList(List<Album> filteredLit) {
+        albums = filteredLit;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public AlbumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
