@@ -80,7 +80,7 @@ public class AlbumRepository {
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
                 Toast.makeText(application.getBaseContext(), "Could not update album", Toast.LENGTH_SHORT).show();;
-                Log.e("POST error", t.getMessage());
+                Log.e("PUT_error", t.getMessage());
             }
         });
     }
@@ -98,8 +98,8 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(application.getBaseContext(), "Could not delete album", Toast.LENGTH_SHORT).show();;
-                Log.e("POST error", t.getMessage());
+                //Toast.makeText(application.getBaseContext(), "Could not delete album", Toast.LENGTH_SHORT).show();;
+                Log.e("DELETE_error", t.getMessage());
             }
         });
     }
