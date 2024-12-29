@@ -18,4 +18,5 @@
     <string name="update_album">Update Album</string>
     <string name="update">Update</string>
     <string name="delete">Delete</string>
+    <string name="select_genres">Select Genres</string>
 </resources>
