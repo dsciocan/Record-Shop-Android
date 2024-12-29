@@ -22,7 +22,7 @@ public class AddAlbumClickHandlers {
     }
 
     public void saveAlbum(View view) {
-        if(album.getName() == null || album.getAlbumArtist().getName() == null) {
+        if(album.getName() == null || album.getGenreSet() == null || album.getAlbumArtist().getName() == null) {
             Toast.makeText(context, "Fields cannot be null", Toast.LENGTH_SHORT).show();
             System.out.println(album.getName() + " " + album.getAlbumArtist().getName());
         } else {
