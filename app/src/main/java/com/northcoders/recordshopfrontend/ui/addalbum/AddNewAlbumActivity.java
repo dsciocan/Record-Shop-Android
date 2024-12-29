@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -23,12 +25,17 @@ import com.northcoders.recordshopfrontend.model.Album;
 import com.northcoders.recordshopfrontend.model.Artist;
 import com.northcoders.recordshopfrontend.ui.mainactivity.MainActivityViewModel;
 
-public class AddNewAlbumActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class AddNewAlbumActivity extends AppCompatActivity {
 
     private MainActivityViewModel mainActivityViewModel;
     private ActivityAddNewAlbumBinding binding;
     private AddAlbumClickHandlers handlers;
     private Album album;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,33 +54,48 @@ public class AddNewAlbumActivity extends AppCompatActivity implements AdapterVie
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
         binding.setAlbum(album);
 
-        Spinner spinner = binding.genreSpinner;
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.genre_array,
-                android.R.layout.simple_spinner_item
-        );
-        spinner.setAdapter(adapter);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setOnItemSelectedListener(this);
+         TextView genrePicker = findViewById(R.id.genreSelector);
+         TextView selectedPreview = findViewById(R.id.selectedGenres);
+         String[] genreChoices = new String[]{ "Pop",  "Rock", "Hiphop", "Rap", "Jazz", "Classical", "Blues", "Metal", "Dance"};
+         boolean[] checkedItems = new boolean[genreChoices.length];
+         List<String> selectedList = Arrays.asList(genreChoices);
+
+
+        genrePicker.setOnClickListener( view -> {
+            selectedPreview.setText(null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Genres");
+            builder.setMultiChoiceItems(genreChoices, checkedItems, (dialog, which, isChecked) -> {
+                checkedItems[which] = isChecked;
+                String currentItem = selectedList.get(which);
+             });
+
+            builder.setPositiveButton("Done", (dialog, which) -> {
+                List<String> picks = new ArrayList<String>();
+                for (int i = 0; i < checkedItems.length; i++) {
+                    if (checkedItems[i]) {
+                        picks.add(selectedList.get(i));
+                    }
+                }
+                selectedPreview.setText(picks.toString().substring(1, picks.toString().length() - 1));
+                album.setGenreSet(picks.toArray(String[]::new));
+            });
+            builder.setNegativeButton("Cancel", (dialog, which) -> {});
+            builder.create();
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        });
+
+
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
         handlers = new AddAlbumClickHandlers(album, this, mainActivityViewModel);
         binding.setClickHandlers(handlers);
 
 
+
+
     }
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String[] newArray = {parent.getItemAtPosition(position).toString()};
-        album.setGenreSet(newArray);
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
